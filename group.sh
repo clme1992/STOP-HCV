@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 #$ -N test-cluster
 #$ -q short.qc
 # clustering the samples by genetic similarity
