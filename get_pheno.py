@@ -1,7 +1,7 @@
 import re
-pheno_file_name1 = "TR000384_ID"
-pheno_file_name2 = "TR000402_noCirrhosis_ID"
-file_name = "August2016.fam"
+pheno_file_name1 = "/data/jaga/stophcv/steven/clinical_data/TR000384_ID"
+pheno_file_name2 = "/data/jaga/stophcv/steven/clinical_data/TR000402_noCirrhosis_ID"
+file_name = "/data/jaga/stophcv/steven/August2016/test/August2016.fam"
 wrt_file_name = "August2016.fam.temp"
 wrt_file = open(wrt_file_name, 'w')
 case_ID = list()
