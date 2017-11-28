@@ -26,7 +26,7 @@ with open (file_name, 'r') as read_file:
                 break
         if ID in case_ID:
             line[5] = 2
-        else if ID in control_ID:
+        elif ID in control_ID:
             line[5] = 1
         else:
             line[5] = 0
