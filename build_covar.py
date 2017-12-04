@@ -18,6 +18,7 @@ with open(file_name, 'r') as read_file:
 wrt_file_name = prefix + "test/August2016.covar"
 wrt_file = open(wrt_file_name, 'w')
 file_name = prefix + "test/August2016.fam"
+missing_num = 0
 with open(file_name, 'r') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
@@ -27,8 +28,10 @@ with open(file_name, 'r') as read_file:
             if len(item) == 10:
                 ID = item
                 break
-        if ID in covar_dict:
+        if (ID in covar_dict) and (covar_dict[ID] != None):
             string = '1' + '\t' + str(covar_dict[ID])
         else:
             string = '1' + '\t'
+            missing_num = missing_num + 1
         print(string, file=wrt_file)
+        print(missing_num)
