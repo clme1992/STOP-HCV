@@ -31,6 +31,5 @@ with open (file_name, 'r') as read_file:
         else:
             line[5] = 0
         print(' '.join(line), file=wrt_file)
-        
 
 
