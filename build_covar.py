@@ -24,8 +24,8 @@ with open(file_name, 'r') as read_file:
         ID_lst = re.split('[-_]', line[0])
         ID = ""
         for item in ID_lst:
-            if len(ID) == 10:
+            if len(item) == 10:
                 ID = item
                 break
-        string = '1' + '\t' + covar_dict[ID]
+        string = '1' + '\t' + str(covar_dict[ID])
         print(string, file=wrt_file)
