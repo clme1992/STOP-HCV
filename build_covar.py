@@ -1,7 +1,7 @@
 #get the covariates of age
 import re
 prefix = "/data/jaga/stophcv/steven/August2016/"
-covar_dict <- dict()
+covar_dict = dict()
 file_name = prefix + "clinical_data/patient_lib.tsv"
 with open(file_name, 'r') as read_file:
     line = read_file.readline()
