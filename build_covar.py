@@ -21,8 +21,9 @@ file_name = prefix + "test/August2016.fam"
 with open(file_name, 'r') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
-        ID = re.split('[-_]', line[0])
-        for item in ID:
+        ID_lst = re.split('[-_]', line[0])
+        ID = ""
+        for item in ID_lst:
             if len(ID) == 10:
                 ID = item
                 break
