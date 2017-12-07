@@ -18,7 +18,7 @@ def compare_date( date1, date2 ):
     return compare(date1[ind], date2[ind])
 
 prefix = "/data/jaga/stophcv/steven/August2016/"
-file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", "clinical_data/TR000384_Additional_Treatment_Data2"]
+file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", prefix+"clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
 for fn in file_name:
     with open(fn, 'r', encoding="latin-1") as read_file:
