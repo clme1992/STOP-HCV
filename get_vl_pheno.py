@@ -17,7 +17,8 @@ def compare_date( date1, date2 ):
         ind = ind - 1
     return compare(date1[ind], date2[ind])
 
-file_name= ["TR000384_Treatment_Data2", "TR000384_Additional_Treatment_Data2"]
+preifx = "/data/jaga/stophcv/steven/August2016/"
+file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", "clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
 for fn in file_name:
     with open(fn, 'r') as read_file:
@@ -43,8 +44,8 @@ for fn in file_name:
                     if early == 2:
                         vl_dict[ID] = [vl, date]
 
-file_name = "August2016.fam"
-wrt_file_name = "August2016_vl.fam"
+file_name = prefix + "test/August2016.fam"
+wrt_file_name = prefix + "test/August2016_vl.fam"
 wrt_file = open(wrt_file_name, 'w')
 with open(file_name, 'r') as read_file:
     pheno_col = 5
@@ -56,7 +57,9 @@ with open(file_name, 'r') as read_file:
             if len(item) == 10:
                 ID = item
         if ID in vl_dict:
+            print(vl_dict[ID][0])
             line[pheno_col] = vl_dict[ID][0]
             print(' '.join(line), file=wrt_file)
         else:
+            line[pheno_col] = '-9'
             print(' '.join(line), file=wrt_file)
