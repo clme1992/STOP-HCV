@@ -17,7 +17,7 @@ def compare_date( date1, date2 ):
         ind = ind - 1
     return compare(date1[ind], date2[ind])
 
-preifx = "/data/jaga/stophcv/steven/August2016/"
+prefix = "/data/jaga/stophcv/steven/August2016/"
 file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", "clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
 for fn in file_name:
