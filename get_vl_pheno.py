@@ -21,7 +21,7 @@ prefix = "/data/jaga/stophcv/steven/August2016/"
 file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", "clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
 for fn in file_name:
-    with open(fn, 'r') as read_file:
+    with open(fn, 'r', encoding="latin-1") as read_file:
         line = read_file.readline()
         line = line.rstrip().split('\t')
         vl_col = None
