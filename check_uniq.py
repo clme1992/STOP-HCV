@@ -8,8 +8,8 @@ ID_col = [0,1,2,3,5,6]
 with open(file_name, 'r') as read_file:
     for line in read_file:
         line = line.rstrip().split('\t')
-        ID_dict[line[prim_col]] = [None]*len(alt_col)
-        for i,col in enumerate(alt_col):
+        ID_dict[line[prim_col]] = [None]*len(ID_col)
+        for i,col in enumerate(ID_col):
             if (len(line) >= col+1) and (line[col] != ""):
                 ID_dict[line[prim_col]][i] = line[col]
 
