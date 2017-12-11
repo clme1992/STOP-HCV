@@ -1,5 +1,11 @@
 import re
 from build_gene_dict import build_ID_dict
+def is_number(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
 
 def compare( item1, item2 ):
     if item1 > item2:
@@ -54,8 +60,8 @@ with open(file_name, 'r') as read_file:
     pheno_col = 5
     for line in read_file:
         line = line.rstrip().split(' ')
-        ID_lst = re.split('[\-_\.]', line[0])
         line[pheno_col] = '-9'
+        ID_lst = re.split('[\-_\.]', line[0])
         ID = None
         for item in ID_lst:
             if len(item) == 10:
@@ -68,4 +74,6 @@ with open(file_name, 'r') as read_file:
             for item in ID_lst:
                 if item in vl_dict:
                     line[pheno_col] = vl_dict[item][0]
+        if not is_number(line[pheno_col]):
+            line[pheno_col] = '-9'
         print(' '.join(line), file=wrt_file)
