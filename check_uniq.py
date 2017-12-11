@@ -31,11 +31,12 @@ for prim_ID in ID_dict:
     for i,ID in enumerate(ID_lst):
         if ID in gene_ID_lst:
             uniq_cnt = uniq_cnt + 1
-        if i != 0:
-            not_prim_cnt = not_prim_cnt + 1
+            if i != 0:
+                not_prim_cnt = not_prim_cnt + 1
     uniq_cnt_lst.append(uniq_cnt)
 
 for item in uniq_cnt_lst:
     if item > 0:
         print(item)
 
+print(not_prim_cnt)
