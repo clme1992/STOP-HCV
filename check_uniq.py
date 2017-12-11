@@ -5,7 +5,7 @@ file_name = prefix + "clinical_data/TR000402_STOP-HCV_Data_Registry_Dataset.txt2
 ID_dict = dict()
 prim_col = 0
 ID_col = [0,1,2,3,5,6]
-with open(file_name, 'r') as read_file:
+with open(file_name, 'r', encoding='latin-1') as read_file:
     for line in read_file:
         line = line.rstrip().split('\t')
         ID_dict[line[prim_col]] = [None]*len(ID_col)
