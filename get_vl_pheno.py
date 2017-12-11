@@ -1,4 +1,5 @@
 import re
+from build_gene_dict import build_ID_dict
 
 def compare( item1, item2 ):
     if item1 > item2:
@@ -20,6 +21,8 @@ def compare_date( date1, date2 ):
 prefix = "/data/jaga/stophcv/steven/August2016/"
 file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", prefix+"clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
+clinic2gene, gene2clinic = build_ID_dict()
+
 for fn in file_name:
     with open(fn, 'r', encoding="latin-1") as read_file:
         line = read_file.readline()
@@ -56,8 +59,8 @@ with open(file_name, 'r') as read_file:
         for item in ID_lst:
             if len(item) == 10:
                 ID = item
-        if ID in vl_dict:
-            print(vl_dict[ID][0])
+        if ID in gene2clinic:
+            ID = gene2clinic[ID]
             line[pheno_col] = vl_dict[ID][0]
             print(' '.join(line), file=wrt_file)
         else:
