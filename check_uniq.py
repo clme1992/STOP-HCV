@@ -14,14 +14,14 @@ with open(file_name, 'r', encoding='latin-1') as read_file:
                 ID_dict[line[prim_col]][i] = line[col]
 
 gene_ID_lst = list()
-file_naem = prefix + "test/August2016.fam"
-with open(file_name, encoding='latin-1') as read_file:
+file_name = prefix + "test/August2016.fam"
+with open(file_name,'r', encoding='latin-1') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
-        ID_lst = re.split('_-', line[0])
+        ID_lst = re.split('[_\-\.]', line[0])
         for item in ID_lst:
             if len(item) == 10:
-                gene_ID_lst.append(ID)
+                gene_ID_lst.append(item)
 
 uniq_cnt_lst = list()
 for prim_ID in ID_dict:
@@ -33,5 +33,6 @@ for prim_ID in ID_dict:
     uniq_cnt_lst.append(uniq_cnt)
 
 for item in uniq_cnt_lst:
-    if item >= 0:
+    if item > 0:
         print(item)
+
