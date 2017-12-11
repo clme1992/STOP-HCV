@@ -51,7 +51,7 @@ with open(file_name, 'r') as read_file:
     pheno_col = 5
     for line in read_file:
         line = line.rstrip().split(' ')
-        ID_lst = re.split('[-_]', line[0])
+        ID_lst = re.split('[\-_\.]', line[0])
         ID = None
         for item in ID_lst:
             if len(item) == 10:

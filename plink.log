@@ -1,0 +1,44 @@
+
+@----------------------------------------------------------@
+|        PLINK!       |     v1.07      |   10/Aug/2009     |
+|----------------------------------------------------------|
+|  (C) 2009 Shaun Purcell, GNU General Public License, v2  |
+|----------------------------------------------------------|
+|  For documentation, citation & bug-report instructions:  |
+|        http://pngu.mgh.harvard.edu/purcell/plink/        |
+@----------------------------------------------------------@
+
+Web-based version check ( --noweb to skip )
+Recent cached web-check found...Problem connecting to web
+
+Writing this text to log file [ plink.log ]
+Analysis started: Mon Oct 30 12:45:55 2017
+
+Options in effect:
+	--bfile /data/jaga/stophcv/steven/August2016/step2/August2016
+
+Reading map (extended format) from [ /data/jaga/stophcv/steven/August2016/step2/August2016.bim ] 
+830114 markers to be included from [ /data/jaga/stophcv/steven/August2016/step2/August2016.bim ]
+Reading pedigree information from [ /data/jaga/stophcv/steven/August2016/step2/August2016.fam ] 
+3814 individuals read from [ /data/jaga/stophcv/steven/August2016/step2/August2016.fam ] 
+0 individuals with nonmissing phenotypes
+Assuming a disease phenotype (1=unaff, 2=aff, 0=miss)
+Missing phenotype value is also -9
+0 cases, 0 controls and 3814 missing
+0 males, 0 females, and 3814 of unspecified sex
+Warning, found 3814 individuals with ambiguous sex codes
+These individuals will be set to missing ( or use --allow-no-sex )
+Writing list of these individuals to [ plink.nosex ]
+Reading genotype bitfile from [ /data/jaga/stophcv/steven/August2016/step2/August2016.bed ] 
+Detected that binary PED file is v1.00 SNP-major mode
+Before frequency and genotyping pruning, there are 830114 SNPs
+3814 founders and 0 non-founders found
+Total genotyping rate in remaining individuals is nan
+0 SNPs failed missingness test ( GENO > 1 )
+0 SNPs failed frequency test ( MAF < 0 )
+After frequency and genotyping pruning, there are 830114 SNPs
+After filtering, 0 cases, 0 controls and 3814 missing
+After filtering, 0 males, 0 females, and 3814 of unspecified sex
+
+Analysis finished: Mon Oct 30 12:47:25 2017
+
