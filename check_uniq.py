@@ -15,7 +15,7 @@ with open(file_name, 'r', encoding='latin-1') as read_file:
 
 gene_ID_lst = list()
 file_naem = prefix + "test/August2016.fam"
-with open(file_name) as read_file:
+with open(file_name, encoding='latin-1') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
         ID_lst = re.split('_-', line[0])
