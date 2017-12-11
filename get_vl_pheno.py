@@ -74,6 +74,6 @@ with open(file_name, 'r') as read_file:
             for item in ID_lst:
                 if item in vl_dict:
                     line[pheno_col] = vl_dict[item][0]
-        if not is_number(line[pheno_col]):
+        if not is_number(line[pheno_col]) or line[pheno_col] == '-1' or float(line[pheno_col]) < 100:
             line[pheno_col] = '-9'
         print(' '.join(line), file=wrt_file)
