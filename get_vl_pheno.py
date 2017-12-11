@@ -21,7 +21,7 @@ def compare_date( date1, date2 ):
 prefix = "/data/jaga/stophcv/steven/August2016/"
 file_name= [prefix+"clinical_data/TR000384_Treatment_Data2", prefix+"clinical_data/TR000384_Additional_Treatment_Data2"]
 vl_dict = dict()
-clinic2gene, gene2clinic = build_ID_dict()
+equal_ID, to_prim_key = build_ID_dict()
 
 for fn in file_name:
     with open(fn, 'r', encoding="latin-1") as read_file:
@@ -59,10 +59,17 @@ with open(file_name, 'r') as read_file:
         for item in ID_lst:
             if len(item) == 10:
                 ID = item
-        if ID in gene2clinic:
-            ID = gene2clinic[ID]
+        if ID in vl_dict:
             line[pheno_col] = vl_dict[ID][0]
-            print(' '.join(line), file=wrt_file)
+        elif ID in to_prim_key:
+            prim_key = to_prim_key[ID]
+            ID_lst = equal_ID[prim_key]
+            for item in ID_lst:
+                if item in vl_dict:
+                    line[pheno_col] = vl_dict[item][0]
+
+        line[pheno_col] = vl_dict[ID][0]
+        print(' '.join(line), file=wrt_file)
         else:
             line[pheno_col] = '-9'
             print(' '.join(line), file=wrt_file)
