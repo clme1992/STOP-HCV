@@ -55,6 +55,7 @@ with open(file_name, 'r') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
         ID_lst = re.split('[\-_\.]', line[0])
+        line[pheno_col] = '-9'
         ID = None
         for item in ID_lst:
             if len(item) == 10:
@@ -67,9 +68,4 @@ with open(file_name, 'r') as read_file:
             for item in ID_lst:
                 if item in vl_dict:
                     line[pheno_col] = vl_dict[item][0]
-
-        line[pheno_col] = vl_dict[ID][0]
         print(' '.join(line), file=wrt_file)
-        else:
-            line[pheno_col] = '-9'
-            print(' '.join(line), file=wrt_file)
