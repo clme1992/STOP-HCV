@@ -7,6 +7,7 @@ def build_ID_dict():
     file_name = prefix + "clinical_data/TR000402_STOP-HCV_Data_Registry_Dataset.txt2"
     prim_col = 0
     ID_col = [0,1,2,3,5,6]
+    clinic_ID_lst = list()
     with open(file_name, 'r', encoding='latin-1') as read_file:
         for line in read_file:
             line = line.rstrip().split('\t')
@@ -14,7 +15,16 @@ def build_ID_dict():
             for i,col in enumerate(ID_col):
                 if (len(line) >= col+1) and (line[col] != ""):
                     clinic2gene[line[prim_col]][i] = line[col]
-
+                    clinic_ID_lst.append(line[col])
+    
+    for file_name in [prefix + "clinical_data/TR000384_Enrolment2", prefix + "clinical_data/TR000384_Additional_Enrolment2"]:
+        with open(file_name, 'r', encoding='latin-1') as read_file:
+            for line in read_file:
+                line = line.rstrip().split('\t')
+                ID = line[prim_col]
+                if ID not in clinic_ID_lst:
+                    clinic2gene[ID] = ID
+                    
     gene_ID_lst = list()
     file_name = prefix + "test/August2016.fam"
     with open(file_name,'r', encoding='latin-1') as read_file:
