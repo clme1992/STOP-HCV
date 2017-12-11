@@ -25,10 +25,15 @@ def build_ID_dict():
                 if len(item) == 10:
                     gene_ID_lst.append(item)
 
-    for prim_ID in ID_dict:
-        ID_lst = ID_dict[prim_ID]
+    for prim_ID in clinic2gene:
+        gene_exit = 0
+        ID_lst = clinic2gene[prim_ID]
         for i,ID in enumerate(ID_lst):
             if ID in gene_ID_lst:
+                gene_exit = 1
                 gene2clinic[ID] = prim_ID
+                clinic2gene[prim_ID] = ID
+        if gene_exit == 0:
+            clinic2gene[prim_ID] = None
 
     return [clinic2gene, gene2clinic]
