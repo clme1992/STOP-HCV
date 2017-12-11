@@ -1,4 +1,4 @@
-'''check if the first column really is the unique identifier to link to the genetic data'''
+#check if the first column really is the unique identifier to link to the genetic data
 import re
 prefix = "/data/jaga/stophcv/steven/August2016/"
 file_name = prefix + "clinical_data/TR000402_STOP-HCV_Data_Registry_Dataset.txt2"
