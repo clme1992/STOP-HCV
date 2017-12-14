@@ -6,7 +6,7 @@ def build_ID_dict():
     gene2clinic = dict()
     equal_ID = dict()
     prefix = "/data/jaga/stophcv/steven/August2016/"
-    file_name = prefix + "clinical_data/Data_Registry_Dataset_Sep_2017.txt"
+    file_name = prefix + "clinical_data/Data_Registry_Dataset_Sep_2017.csv"
     prim_col = 0
     ID_col = [0,1,2,3,5,6]
     to_prim_key = dict()
