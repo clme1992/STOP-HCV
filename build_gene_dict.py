@@ -1,5 +1,6 @@
 # built ID dict
 import re
+from csv import reader
 def build_ID_dict():
     clinic2gene = dict()
     gene2clinic = dict()
@@ -11,8 +12,8 @@ def build_ID_dict():
     to_prim_key = dict()
     clinic_ID_lst = list()
     with open(file_name, 'r', encoding='latin-1') as read_file:
-        for line in read_file:
-            line = line.rstrip().split('\t')
+        for line in reader(read_file):
+            #line = line.rstrip().split('\t')
             equal_ID[line[prim_col]] = [None]*len(ID_col)
             for i,col in enumerate(ID_col):
                 if (len(line) >= col+1) and (line[col] != ""):
