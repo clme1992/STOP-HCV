@@ -7,11 +7,14 @@ with open(file_name, 'r') as read_file:
     read_file.readline()
     for line in read_file:
         ID = line.rstrip().split('\t')[0]
-        prim_ID = to_prim_key[ID]
-        if prim_ID in ID_dup:
-            ID_dup[prim_ID] = ID_dup[prim_ID] + 1
+        if ID in to_prim_key:
+            prim_ID = to_prim_key[ID]
+            if prim_ID in ID_dup:
+                ID_dup[prim_ID] = ID_dup[prim_ID] + 1
+            else:
+                ID_dup[prim_ID] = 0
         else:
-            ID_dup[prim_ID] = 0
+            print("can't find prim key: "+ str(ID))
 
 for ID in ID_dup:
     if ID_dup[ID] > 1:
