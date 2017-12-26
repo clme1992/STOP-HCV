@@ -1,5 +1,5 @@
 # let's read the infl4 genotype data.
-ifnl4 = read.table('IFNL4_genotypes.ped')
+ifnl4 = read.table('~/OneDrive - OnTheHub - The University of Oxford/rs12979860/August2016_rs12979860.ped')
 infl4_ids = data.frame(V1 = rep(NA,dim(ifnl4)[1]),V2 = rep(NA,dim(ifnl4)[1]),V3 = rep(NA,dim(ifnl4)[1]),V4 = rep(NA,dim(ifnl4)[1]),V5 = rep(NA,dim(ifnl4)[1]),V6 = rep(NA,dim(ifnl4)[1]))
 for (i in 1:dim(ifnl4)[1]){
   temp = strsplit(as.character(ifnl4$V1[i]),'_|-|\\.')
@@ -54,7 +54,7 @@ ifnl4[nchar(infl4_ids$V3) == 4 | nchar(infl4_ids$V3) == 5,]
 Boson_samples = ifnl4[nchar(infl4_ids$V3) == 4 | nchar(infl4_ids$V3) == 5,]
 ifnl4 = ifnl4[!(nchar(infl4_ids$V3) == 4 | nchar(infl4_ids$V3) == 5),]
 infl4_ids = infl4_ids[!(nchar(infl4_ids$V3) == 4 | nchar(infl4_ids$V3) == 5),]
-
+nrow(Boson_samples)
 # I need to change a few things around. there are a few mistakes.
 table(nchar(infl4_ids$V2))
 table(infl4_ids[nchar(infl4_ids$V1)==3,1])
@@ -88,11 +88,10 @@ infl4_ids[grep('O',infl4_ids$V2),2] = gsub('O','0',infl4_ids[grep('O',infl4_ids$
 
 
 # all the ids together in one place.
-dregistry = read.csv("/Users/ansari/Projects/HCV/Cirrhosis/Clinical_data/Data_Registry_Dataset_Sep_2017.csv",colClasses=c(rep("factor",36)))
-dregistry = dregistry[,-37]
+dregistry = read.csv("~/OneDrive - OnTheHub - The University of Oxford/clinical_data/Data_Registry_Dataset_Sep_2017.csv",colClasses=c(rep("factor",36)))
 # from above we have the ifnl4 and infl4_ids
 
-# let's do it the othe way.
+# let's do it the other way.
 matchingrows = rep(NA,dim(infl4_ids)[1])
 for (i in 1:dim(infl4_ids)[1]){
   if (nchar(infl4_ids$V2[i]) == 10){
@@ -108,4 +107,4 @@ for (i in 1:dim(infl4_ids)[1]){
 
 # let's get the missing ones.
 infl4_ids[nchar(infl4_ids$V2)==10 & is.na(matchingrows),]
-
+nrow(infl4_ids[nchar(infl4_ids$V2)==10 & is.na(matchingrows),])

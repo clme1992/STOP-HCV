@@ -1,36 +1,42 @@
 import re
+import sys
+from build_gene_dict import *
 prefix = "/data/jaga/stophcv/steven/August2016/"
-pheno_file_name1 = prefix + "clinical_data/TR000384_ID"
-pheno_file_name2 = prefix + "clinical_data/TR000402_noCirrhosis_ID"
-file_name = prefix + "test/August2016.fam"
+if sys.argv[1] == 'local':
+    prefix = "/Users/stevenlin/OneDrive - OnTheHub - The University of Oxford/"
+pheno_file_name = prefix + "clinical_data/STOP-HCV_Data_Registry_Will.csv"
+file_name = prefix + "clinical_data/August2016.fam"
 wrt_file_name = prefix + "test/August2016.fam.temp"
+if sys.argv[1] == 'local':
+    wrt_file_name = prefix + "clinical_data/August2016.fam.temp"
 wrt_file = open(wrt_file_name, 'w')
+
+equal_ID, to_prim_key = build_ID_dict(1)
 case_ID = list()
 control_ID = list()
-with open(pheno_file_name1, 'r') as read_file:
-    for line in read_file:
-        line = line.rstrip()
-        case_ID.append(line)
-with open(pheno_file_name2, 'r') as read_file:
-    for line in read_file:
-        line = line.rstrip()
-        control_ID.append(line)
+prim_col = 0
+cirr_col = 4
 
+with open(pheno_file_name, 'r', encoding='latin-1') as read_file:
+    for line in reader(read_file):
+        if line[cirr_col] == 'Y':
+            case_ID.append(line[prim_col])
+        else:
+            control_ID.append(line[prim_col])
+
+cleanID_dict = build_cleanID_dict(1)
 with open (file_name, 'r') as read_file:
     for line in read_file:
         line = line.rstrip().split(' ')
-        line_lst = re.split('[-_]', line[0])
-        ID = ""
-        for item in line_lst:
-            if len(item) == 10:
-                ID = item
-                break
-        if ID in case_ID:
-            line[5] = '2'
-        elif ID in control_ID:
-            line[5] = '1'
-        else:
-            line[5] = '-9'
-        print(' '.join(line), file=wrt_file)
+        line[5] = '-9'
+        ID = line[0]
+        if ID in cleanID_dict:
+            ID = cleanID_dict[ID]
+            if ID in to_prim_key:
+                if to_prim_key[ID] in case_ID:
+                    line[5] = '2'
+                elif to_prim_key[ID] in control_ID:
+                    line[5] = '1'
+        print(" ".join(line), file=wrt_file)
 
 
